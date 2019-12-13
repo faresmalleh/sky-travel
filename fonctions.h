@@ -16,6 +16,7 @@ int annee;
 char num_tel[50];
 char adresse [50];
 char sexe[10];
+int role;
 }fiche;
 
 void supprimerfiche(char id[],char password[],char nom[],char prenom[],char e_mail[],char num_tel[],int jour,int mois,int annee,char adresse[],char sexe []);

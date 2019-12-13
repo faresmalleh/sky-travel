@@ -46,7 +46,7 @@ void ajouterfiche(fiche fi)
 	FILE *f;
 	f = fopen("fiche.txt","a");
 	if(f!=NULL){
-		fprintf(f,"%s %s %s %s %s %s %d %d %d %s %s\n",fi.id,fi.password,fi.nom,fi.prenom,fi.e_mail,fi.num_tel,fi.jour,fi.mois,fi.annee,fi.adresse,fi.sexe);
+		fprintf(f,"%s %s %s %s %s %s %d %d %d %s %s %d\n",fi.id,fi.password,fi.nom,fi.prenom,fi.e_mail,fi.num_tel,fi.jour,fi.mois,fi.annee,fi.adresse,fi.sexe,fi.role);
 	}
 	fclose(f);
 
@@ -69,7 +69,7 @@ enum {
        COL_SEXE,
        NUM_COLS	
       };
-char id[20],password[20],nom[20],prenom[20],e_mail[30],sexe[10],adresse[50],num_tel[50]; int jour,mois,annee;
+char id[20],password[20],nom[20],prenom[20],e_mail[30],sexe[10],adresse[50],num_tel[50]; int jour,mois,annee,role;
 GtkListStore *liststore;
 GtkCellRenderer *celrender;
 GtkTreeViewColumn *col;
@@ -78,7 +78,7 @@ liststore = gtk_list_store_new(NUM_COLS,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRIN
 FILE *f;
 f=fopen("fiche.txt","r");
 if(f!=NULL){
-       while(fscanf(f,"%s %s %s %s %s %s %d %d %d %s %s\n",id,password,nom,prenom,e_mail,num_tel,&jour,&mois,&annee,adresse,sexe)!=EOF){
+       while(fscanf(f,"%s %s %s %s %s %s %d %d %d %s %s %d\n",id,password,nom,prenom,e_mail,num_tel,&jour,&mois,&annee,adresse,sexe,&role)!=EOF){
            GtkTreeIter iter;
             gtk_list_store_append(liststore, &iter);
             gtk_list_store_set(liststore, &iter,
